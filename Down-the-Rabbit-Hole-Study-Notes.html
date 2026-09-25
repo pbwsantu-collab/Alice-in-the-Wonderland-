@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Down the Rabbit-Hole — HS Study Notes (English–Bengali)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Bengali:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE3CF;
+    --paper-deep:#E4D7BC;
+    --ink:#26211B;
+    --ink-soft:#4A4136;
+    --burgundy:#7C2D3B;
+    --burgundy-deep:#5E212C;
+    --forest:#34544A;
+    --gold:#A9812F;
+    --line:#C9BBA0;
+    --paper-card:#F5EEDF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:90px;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Lora','Noto Sans Bengali',serif; line-height:1.75; font-size:17px;}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond','Noto Sans Bengali',serif; font-weight:600; color:var(--burgundy-deep); margin:0 0 .4em; line-height:1.15;}
+  a{color:var(--forest);}
+  .bn{font-family:'Noto Sans Bengali','Lora',serif;}
+
+  .frame{display:flex; max-width:1180px; margin:0 auto;}
+  nav.side{position:sticky; top:0; align-self:flex-start; width:216px; flex:0 0 216px; height:100vh; overflow-y:auto; padding:28px 14px 28px 22px; border-right:1px solid var(--line);}
+  nav.side .brand{font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:1.5rem; color:var(--burgundy); margin-bottom:1.4em;}
+  nav.side ul{list-style:none; margin:0; padding:0;}
+  nav.side li{margin-bottom:.35em;}
+  nav.side a{display:block; padding:.4em .6em; text-decoration:none; color:var(--ink-soft); border-left:3px solid transparent; font-size:.95rem;}
+  nav.side a:hover, nav.side a.active{color:var(--burgundy-deep); border-left-color:var(--burgundy); background:rgba(124,45,59,.07);}
+  main{flex:1; min-width:0; padding:0 0 80px;}
+
+  .mobile-tabs{display:none;}
+  @media (max-width:880px){
+    nav.side{display:none;}
+    .mobile-tabs{display:flex; overflow-x:auto; gap:6px; position:sticky; top:0; z-index:20; background:var(--paper); padding:10px 12px; border-bottom:1px solid var(--line);}
+    .mobile-tabs a{flex:0 0 auto; white-space:nowrap; font-size:.85rem; padding:.45em .9em; border:1px solid var(--line); border-radius:999px; text-decoration:none; color:var(--ink-soft); font-family:'Lora',serif;}
+  }
+
+  .hero{padding:56px 48px 30px; border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
+  .hero svg.spiral{position:absolute; right:-40px; top:-40px; width:230px; height:230px; opacity:.5;}
+  .hero .kicker{color:var(--forest); font-size:.92rem; margin-bottom:.6em;}
+  .hero h1{font-size:3rem; font-style:italic; max-width:11ch;}
+  .hero p.lede{max-width:64ch; color:var(--ink-soft); font-size:1.05rem;}
+  .meta-row{display:flex; flex-wrap:wrap; gap:22px; margin-top:1.2em; font-size:.92rem; color:var(--ink-soft);}
+  .meta-row strong{color:var(--ink); display:block; font-size:.78rem; margin-bottom:.15em;}
+
+  section{padding:40px 48px; border-bottom:1px solid var(--line);}
+  @media (max-width:640px){ .hero, section{padding:30px 20px;} }
+  section h2{font-size:1.9rem; font-style:italic;}
+  section > .sec-note{color:var(--ink-soft); font-size:.95rem; margin:-.3em 0 1.4em;}
+
+  .howto{background:var(--paper-card); border:1px solid var(--line); border-left:4px solid var(--forest); padding:16px 20px; border-radius:4px; font-size:.95rem; color:var(--ink-soft); margin-bottom:1.6em;}
+  .howto b{color:var(--forest);}
+
+  .toolbar{display:flex; flex-wrap:wrap; align-items:center; gap:10px; background:var(--paper-card); border:1px solid var(--line); padding:10px 14px; border-radius:8px; margin-bottom:1.8em; position:sticky; top:8px; z-index:5;}
+  .toolbar button, .toolbar select{font-family:'Lora',serif; font-size:.86rem; background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:.5em .75em; cursor:pointer;}
+  .toolbar button.primary{background:var(--burgundy); color:var(--paper-card); border-color:var(--burgundy-deep);}
+  .toolbar button.primary:hover{background:var(--burgundy-deep);}
+  .toolbar button.on{background:var(--forest); color:var(--paper-card); border-color:var(--forest);}
+  .toolbar button:hover{background:var(--paper-deep);}
+  .toolbar .sep{width:1px; height:22px; background:var(--line);}
+  .toolbar .now-reading{font-size:.8rem; color:var(--ink-soft); font-style:italic;}
+
+  .page-tag{font-size:.78rem; color:var(--gold); margin:1.6em 0 .2em;}
+  .story-text p.en-line{max-width:74ch; margin:0 0 .25em; text-align:left;}
+  .bn-line{max-width:74ch; color:var(--forest); font-size:.92em; margin:0 0 1.15em; padding-left:.8em; border-left:2px solid var(--line);}
+  body.hide-bn .bn-line{display:none;}
+
+  .story-text p.en-line.speaking{background:rgba(52,84,74,.10); box-shadow:-10px 0 0 -6px var(--forest); border-radius:3px;}
+  .rw.word-speaking{background:var(--burgundy); color:var(--paper-card); border-radius:3px; padding:0 .06em; box-shadow:0 0 0 1px var(--burgundy);}
+
+  .footnote-mark{color:var(--forest); font-size:.72em; vertical-align:super;}
+  .footnotes{max-width:74ch; font-size:.9rem; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:.8em; margin-top:1.6em;}
+  .footnotes li{margin-bottom:.3em;}
+
+  .gw{border-bottom:1.5px dotted var(--forest); cursor:pointer; color:var(--forest); position:relative;}
+  .gw:hover{background:rgba(52,84,74,.08);}
+  .gw.open{background:rgba(52,84,74,.14);}
+
+  .key{text-decoration:underline; text-decoration-color:var(--burgundy); text-decoration-thickness:1.5px; text-underline-offset:3px; background:linear-gradient(transparent 62%, rgba(124,45,59,.10) 62%); font-weight:500; color:var(--ink);}
+
+  #tooltip{position:fixed; z-index:50; max-width:260px; background:var(--ink); color:var(--paper-card); padding:.6em .8em; border-radius:8px; font-size:.92rem; line-height:1.5; box-shadow:0 8px 22px rgba(0,0,0,.28); display:none;}
+  #tooltip .en{color:#D8CBB0; font-size:.78rem; display:block; margin-bottom:.15em; font-style:italic;}
+  #tooltip:after{content:""; position:absolute; bottom:-6px; left:16px; width:12px; height:12px; background:var(--ink); transform:rotate(45deg);}
+
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .card{background:var(--paper-card); border:1px solid var(--line); border-radius:10px; padding:20px 22px;}
+  .card h3{font-size:1.25rem; margin-bottom:.5em;}
+
+  .ca-point{margin-bottom:1.6em;}
+  .ca-point h3{font-size:1.28rem; color:var(--burgundy);}
+  .ca-point ul{margin:.5em 0 0; padding-left:1.2em;}
+  .ca-point li{margin-bottom:.4em;}
+  .ca-point .bn-line{margin-top:.3em;}
+
+  .qa{border:1px solid var(--line); border-radius:10px; background:var(--paper-card); margin-bottom:14px; overflow:hidden;}
+  .qa summary{list-style:none; cursor:pointer; padding:14px 18px; font-weight:600; color:var(--ink); display:flex; gap:.6em; align-items:baseline;}
+  .qa summary::-webkit-details-marker{display:none;}
+  .qa summary .qnum{color:var(--burgundy); font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.15rem;}
+  .qa[open] summary{border-bottom:1px solid var(--line);}
+  .qa .answer{padding:14px 18px 18px; color:var(--ink-soft); font-size:.98rem;}
+  .qa .answer ul{margin:.4em 0 0; padding-left:1.2em;}
+  .qa .answer li{margin-bottom:.3em;}
+  .laq .answer{max-width:74ch;}
+
+  footer{padding:28px 48px; font-size:.85rem; color:var(--ink-soft); text-align:center;}
+</style>
+</head>
+<body>
+
+<div class="mobile-tabs">
+  <a href="#about">About</a>
+  <a href="#text">Full Text</a>
+  <a href="#analysis">Analysis</a>
+  <a href="#saq">SAQ</a>
+  <a href="#laq">Long Answers</a>
+</div>
+
+<div class="frame">
+  <nav class="side" id="sidenav">
+    <div class="brand">Rabbit-Hole</div>
+    <ul>
+      <li><a href="#about">About Author &amp; Text</a></li>
+      <li><a href="#text">Full Text</a></li>
+      <li><a href="#analysis">Critical Analysis</a></li>
+      <li><a href="#saq">Short Answers (SAQ)</a></li>
+      <li><a href="#laq">Long Answers</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <svg class="spiral" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 100 C100 60 140 60 140 100 C140 150 70 150 70 90 C70 30 160 30 160 100 C160 170 30 170 30 90 C30 10 180 10 180 100" fill="none" stroke="#7C2D3B" stroke-width="2"/>
+      </svg>
+      <div class="kicker">HS 4th Semester · A Realm of English (B) · Prose</div>
+      <h1>Down the<br>Rabbit-Hole</h1>
+      <p class="lede">Full text with a dense English–Bengali glossary, a Bengali translation under every line, the exam-important lines underlined, a critical analysis, and SAQ / Long-answer practice — with a read-aloud voice that highlights each word as it is spoken.</p>
+      <div class="meta-row">
+        <div><strong>Author</strong>Lewis Carroll (1832–1898)</div>
+        <div><strong>Source</strong>Alice's Adventures in Wonderland, Ch. 1 (1865)</div>
+        <div><strong>Pages</strong>161–166</div>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2>About the Author &amp; the Text</h2>
+      <div class="about-grid">
+        <div class="card">
+          <h3>Lewis Carroll <span class="bn">(লুইস ক্যারল)</span></h3>
+          <p><span class="gw" data-bn="প্রকৃত নাম">Charles Lutwidge Dodgson</span>, better known by his <span class="gw" data-bn="ছদ্মনাম">pen name</span> Lewis Carroll, was an <span class="gw" data-bn="ইংরেজ">English</span> <span class="gw" data-bn="লেখক">author</span>, <span class="gw" data-bn="কবি">poet</span>, <span class="gw" data-bn="গণিতবিদ">mathematician</span>, photographer and a <span class="gw" data-bn="অনিচ্ছুক">reluctant</span> Anglican <span class="gw" data-bn="যাজক">deacon</span>. His most <span class="gw" data-bn="উল্লেখযোগ্য">notable</span> works are <em>Alice's Adventures in Wonderland</em> (1865) and its <span class="gw" data-bn="পরবর্তী অংশ">sequel</span> <em>Through the Looking Glass</em> (1871). He was noted for his <span class="gw" data-bn="শব্দ নিয়ে খেলা">wordplay</span>, logic and <span class="gw" data-bn="কল্পনাশক্তি">fantasy</span>. Some of Alice's "nonsensical" wonderland logic <span class="gw" data-bn="প্রতিফলিত করে">reflects</span> his published work on mathematical logic. An <span class="gw" data-bn="প্রবল আগ্রহী">avid</span> puzzle solver, Carroll <span class="gw" data-bn="সৃষ্টি করলেন">created</span> the word ladder puzzle, published in his weekly column for <em>Vanity Fair</em> magazine between 1879 and 1881. In 1982 a <span class="gw" data-bn="স্মৃতিফলক">memorial stone</span> to Carroll was <span class="gw" data-bn="উন্মোচন করা হলো">unveiled</span> at Poets' Corner in Westminster Abbey.</p>
+        </div>
+        <div class="card">
+          <h3>About the Text</h3>
+          <p>The phrase '<span class="gw" data-bn="খরগোশের গর্তের নিচে">down the rabbit-hole</span>' comes from this chapter, where Alice follows a talking rabbit into a hole and falls into a strange, <span class="gw" data-bn="কল্পনাপ্রসূত">fantastical</span> world. Today it is a <span class="gw" data-bn="রূপক">metaphor</span> for getting lost in a <span class="gw" data-bn="জটিল">complex</span> or <span class="gw" data-bn="মনোযোগ-বিচ্যুতকারী">distracting</span> pursuit — in the 21st century, especially with technology, the term has come to mean a person ending up somewhere <em>mentally</em> rather than physically. Bored by her sister's book, Alice sees a White Rabbit with a pocket watch declare he is late, and curiosity leads her down the hole into Wonderland, where the rules of reality no longer apply.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="text">
+      <h2>The Full Text</h2>
+      <p class="sec-note">Tap any dotted word for its Bengali meaning. A Bengali translation runs under every line — use the toolbar to hide it if you only want the English. Underlined, highlighted lines are the ones most often asked about in exams.</p>
+
+      <div class="howto"><b>How to use this page —</b> click a <span class="gw" data-bn="উদাহরণ অর্থ">dotted word</span> for its Bengali meaning; click elsewhere to close it. Press "Read aloud" to hear the passage — the word being spoken lights up in a contrasting colour so you can follow along.</div>
+
+      <div class="toolbar" id="toolbar">
+        <button class="primary" id="playBtn">▶ Read aloud</button>
+        <button id="pauseBtn">⏸ Pause</button>
+        <button id="stopBtn">⏹ Stop</button>
+        <span class="sep"></span>
+        <label style="font-size:.85rem;">Voice <select id="voiceSelect"></select></label>
+        <label style="font-size:.85rem;">Speed
+          <select id="rateSelect">
+            <option value="0.75">Slow</option>
+            <option value="1" selected>Normal</option>
+            <option value="1.2">Fast</option>
+          </select>
+        </label>
+        <span class="sep"></span>
+        <button id="bnToggle" class="on">বাংলা অনুবাদ: On</button>
+        <span class="sep"></span>
+        <button id="fontMinus">A−</button>
+        <button id="fontPlus">A+</button>
+        <span class="now-reading" id="nowReading"></span>
+      </div>
+
+      <div class="story-text" id="storyText">
+
+        <p class="page-tag">Page 161</p>
+
+        <p class="en-line"><span class="key"><span class="gw" data-bn="অ্যালিস">Alice</span> was beginning to get very <span class="gw" data-bn="ক্লান্ত">tired</span> of <span class="gw" data-bn="বসে থাকা">sitting</span> by her sister on the <span class="gw" data-bn="পাড়/তীর">bank</span>, and of having nothing to do</span>: once or twice she had <span class="gw" data-bn="উঁকি দিয়েছিল">peeped</span> into the book her sister was reading, but it had no <span class="gw" data-bn="ছবি">pictures</span> or <span class="gw" data-bn="কথোপকথন">conversations</span> in it, "<span class="key">and what is the use of a book," thought Alice "without pictures or conversations?"</span></p>
+        <p class="bn-line">নদীর পাড়ে বোনের পাশে বসে বসে আর কিছু না করে অ্যালিসের খুব ক্লান্তি লাগছিল; এক-দুবার সে বোনের পড়া বইটার দিকে উঁকি দিয়েছিল, কিন্তু তাতে কোনো ছবি বা কথোপকথন ছিল না। অ্যালিস মনে মনে ভাবল, "ছবি বা কথোপকথন ছাড়া বইয়ের আবার কী দরকার?"</p>
+
+        <p class="en-line">So she was <span class="gw" data-bn="ভাবছিল">considering</span> in her own mind (as well as she could, for the hot day made her feel very <span class="gw" data-bn="ঘুম ঘুম ভাব">sleepy</span> and <span class="gw" data-bn="আলসেমি-ভরা">stupid</span>), whether the <span class="gw" data-bn="আনন্দ">pleasure</span> of making a <span class="gw" data-bn="ডেইজি ফুলের মালা">daisy-chain</span> would be worth the <span class="gw" data-bn="কষ্ট/ঝামেলা">trouble</span> of getting up and <span class="gw" data-bn="তোলা">picking</span> the daisies, when <span class="gw" data-bn="হঠাৎ">suddenly</span> a White Rabbit with <span class="gw" data-bn="গোলাপি">pink</span> eyes <span class="gw" data-bn="দৌড়াল">ran</span> close by her.</p>
+        <p class="bn-line">তখন সে মনে মনে ভাবছিল (যতটা পারা যায়, কারণ গরমের দিনে তার খুব ঘুম-ঘুম আর আলসেমি লাগছিল) যে উঠে গিয়ে ডেইজি ফুল তুলে মালা গাঁথার কষ্টটা করার মতো আনন্দ সত্যিই হবে কিনা—ঠিক তখনই গোলাপি চোখের একটা সাদা খরগোশ তার পাশ দিয়ে দৌড়ে গেল।</p>
+
+        <p class="en-line">There was nothing so very <span class="gw" data-bn="আশ্চর্যজনক">remarkable</span> in that; nor did Alice think it so very much <span class="gw" data-bn="অস্বাভাবিক">out of the way</span> to hear the Rabbit say to itself, <span class="key">"Oh dear! Oh dear! I shall be late!"</span> (when she thought it over <span class="gw" data-bn="পরে">afterwards</span>, it <span class="gw" data-bn="মনে হলো">occurred</span> to her that she ought to have <span class="gw" data-bn="অবাক হওয়া">wondered</span> at this, but at the time it all seemed quite <span class="gw" data-bn="স্বাভাবিক">natural</span>); but when the Rabbit <span class="gw" data-bn="আসলে">actually</span> took a watch out of its <span class="gw" data-bn="কোমরকোটের পকেট">waistcoat-pocket</span>, and looked at it, and then <span class="gw" data-bn="তাড়াহুড়ো করল">hurried</span> on, Alice started to her feet, for it <span class="gw" data-bn="হঠাৎ মনে পড়া">flashed across her mind</span> that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with <span class="gw" data-bn="কৌতূহল">curiosity</span>, she ran across the <span class="gw" data-bn="মাঠ">field</span> after it, and <span class="gw" data-bn="সৌভাগ্যক্রমে">fortunately</span> was just in time to see it <span class="gw" data-bn="ঢুকে পড়ল">pop down</span> a large rabbit-hole under the hedge<sup class="footnote-mark">1</sup>.</p>
+        <p class="bn-line">তাতে খুব একটা আশ্চর্যের কিছু ছিল না; খরগোশটাকে নিজে নিজে বলতে শুনেও অ্যালিসের অতটা অস্বাভাবিক মনে হয়নি, "ওহ্ ভগবান! ওহ্ ভগবান! আমার দেরি হয়ে যাবে!" (পরে ভেবে দেখে তার মনে হয়েছিল যে তখনই তার অবাক হওয়া উচিত ছিল, কিন্তু সেই মুহূর্তে সবকিছুই একদম স্বাভাবিক মনে হয়েছিল)। কিন্তু যখন খরগোশটা সত্যিই তার কোমরকোটের পকেট থেকে একটা ঘড়ি বের করে সময় দেখে তাড়াতাড়ি এগিয়ে গেল, তখন অ্যালিস লাফিয়ে উঠল—কারণ তার মনে পড়ল, সে আগে কখনো কোমরকোট-পকেটওয়ালা বা ঘড়ি বহনকারী খরগোশ দেখেনি। কৌতূহলে জ্বলতে জ্বলতে সে মাঠ পেরিয়ে তার পিছু নিল, আর সৌভাগ্যক্রমে ঠিক সময়ে দেখতে পেল খরগোশটা ঝোপের নিচের একটা বড় গর্তে ঢুকে পড়ল।</p>
+
+        <p class="en-line"><span class="key">In another <span class="gw" data-bn="মুহূর্ত">moment</span> down went Alice after it, never once considering how in the world she was to get out again.</span></p>
+        <p class="bn-line">পরমুহূর্তেই অ্যালিসও তার পিছু পিছু গর্তের ভেতর নেমে গেল, একবারও ভাবল না যে পরে কীভাবে সে আবার বেরিয়ে আসবে।</p>
+
+        <p class="en-line">The rabbit-hole went <span class="gw" data-bn="সোজা">straight</span> on like a <span class="gw" data-bn="সুড়ঙ্গ">tunnel</span> for some way, and then <span class="gw" data-bn="নেমে গেল">dipped</span> suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself <span class="gw" data-bn="পড়ে যাওয়া">falling</span> down a very <span class="gw" data-bn="গভীর">deep</span> well.</p>
+        <p class="bn-line">খরগোশের গর্তটা কিছুদূর সুড়ঙ্গের মতো সোজা গিয়েছিল, তারপর হঠাৎ নিচের দিকে নেমে গিয়েছিল—এত হঠাৎ যে নিজেকে থামানোর কথা ভাবারও সময় পায়নি অ্যালিস, তার আগেই সে দেখল সে একটা খুব গভীর কুয়োর ভেতর পড়ে যাচ্ছে।</p>
+
+        <p class="en-line">Either the well was very deep, or she fell very slowly, for she had <span class="gw" data-bn="প্রচুর">plenty</span> of time as she went down to look about her and to wonder what was going to happen next. First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and <span class="gw" data-bn="লক্ষ করল">noticed</span> that they were filled with <span class="gw" data-bn="আলমারি">cupboards</span> and <span class="gw" data-bn="বইয়ের তাক">book-shelves</span>; here and there she saw maps and pictures hung upon <span class="gw" data-bn="খুঁটি/হুক">pegs</span>. She took down a jar from one of the shelves as she passed; it was <span class="gw" data-bn="লেবেল লাগানো">labelled</span> "ORANGE <span class="gw" data-bn="কমলার মোরব্বা">MARMALADE</span>", but to her</p>
+        <p class="bn-line">হয় কুয়োটা খুবই গভীর ছিল, নয়তো সে খুব ধীরে ধীরে পড়ছিল, কারণ নিচে নামতে নামতে চারদিকে তাকানোর এবং পরে কী ঘটবে তা ভাবার মতো যথেষ্ট সময় সে পেয়েছিল। প্রথমে সে নিচের দিকে তাকিয়ে বোঝার চেষ্টা করল সে কোথায় গিয়ে পড়বে, কিন্তু অন্ধকারে কিছুই দেখা যাচ্ছিল না। তারপর সে কুয়োর দেওয়ালের দিকে তাকাল, দেখল সেখানে আলমারি আর বইয়ের তাক ভর্তি; এখানে-ওখানে খুঁটিতে ঝোলানো মানচিত্র আর ছবিও দেখা গেল। যেতে যেতে সে একটা তাক থেকে একটা বয়াম তুলে নিল; তার গায়ে লেখা ছিল "কমলার মোরব্বা", কিন্তু তাকে</p>
+
+        <p class="page-tag">Page 163</p>
+
+        <p class="en-line">great <span class="gw" data-bn="হতাশা">disappointment</span> it was <span class="gw" data-bn="খালি">empty</span>: she did not like to drop the jar for fear of <span class="gw" data-bn="হত্যা করা">killing</span> somebody <span class="gw" data-bn="নিচে">underneath</span>, so <span class="gw" data-bn="ব্যবস্থা করল">managed</span> to put it into one of the cupboards as she fell past it.</p>
+        <p class="bn-line">চরম হতাশ করে বয়ামটা খালি বেরোল। নিচে কারও গায়ে পড়ে কাউকে আঘাত করার ভয়ে সে বয়ামটা ফেলে দিল না, বরং পড়তে পড়তে সেটাকে একটা আলমারির মধ্যে রেখে দিল।</p>
+
+        <p class="en-line"><span class="key">"Well!" thought Alice to herself, "after such a fall as this, I shall think nothing of <span class="gw" data-bn="গড়িয়ে পড়া">tumbling</span> down <span class="gw" data-bn="সিঁড়ি">stairs</span>! How <span class="gw" data-bn="সাহসী">brave</span> they'll all think me at home! Why, I wouldn't say anything about it, even if I fell off the top of the house!" (Which was very likely true.)</span></p>
+        <p class="bn-line">"বাহ্!" অ্যালিস মনে মনে ভাবল, "এতবড় পতনের পর সিঁড়ি থেকে গড়িয়ে পড়াকে তো আমি কিছুই মনে করব না! বাড়িতে সবাই আমাকে কতই না সাহসী ভাববে! এমনকি বাড়ির ছাদ থেকে পড়লেও আমি এটা নিয়ে একটা কথাও বলব না!" (যা সম্ভবত সত্যিই হতো।)</p>
+
+        <p class="en-line"><span class="key">Down, down, down. Would the fall never come to an end?</span> "I wonder how many miles I've fallen by this time?" she said aloud. "I must be getting somewhere near the centre of the earth. Let me see: that would be four thousand miles down, I think—" (for, you see, Alice had learnt several things of this sort in her <span class="gw" data-bn="স্কুলঘর">schoolroom</span> lessons, and though this was not a very good <span class="gw" data-bn="সুযোগ">opportunity</span> for showing off her <span class="gw" data-bn="জ্ঞান">knowledge</span>, as there was no one to <span class="gw" data-bn="শোনা">listen</span> to her, still it was good <span class="gw" data-bn="অভ্যাস">practice</span> to say it over) "—yes, that's about the right <span class="gw" data-bn="দূরত্ব">distance</span> — but then I wonder what <span class="gw" data-bn="অক্ষাংশ">Latitude</span> or <span class="gw" data-bn="দ্রাঘিমাংশ">Longitude</span> I've got to?" (Alice had no idea what Latitude was, or Longitude either, but thought they were nice <span class="gw" data-bn="জমকালো">grand</span> words to say.)</p>
+        <p class="bn-line">নিচে, নিচে, আরও নিচে। এই পতনের কি কখনো শেষ হবে না? "এতক্ষণে আমি কত মাইল পড়েছি, কে জানে?" সে জোরে বলল। "আমি নিশ্চয়ই পৃথিবীর কেন্দ্রের কাছাকাছি কোথাও পৌঁছে যাচ্ছি। দেখি তো—তাহলে চার হাজার মাইল নিচে হবে, মনে হয়—" "—হ্যাঁ, দূরত্বটা প্রায় ঠিকই আছে—কিন্তু তাহলে আমি কোন অক্ষাংশ বা দ্রাঘিমাংশে পৌঁছেছি, কে জানে?" (অক্ষাংশ বা দ্রাঘিমাংশ কী, তা অ্যালিসের কোনো ধারণাই ছিল না, শুধু মনে হতো কথাগুলো বলতে বেশ জমকালো শোনায়।)</p>
+
+        <p class="en-line">Presently she began again. "I wonder if I shall fall right through the earth! How <span class="gw" data-bn="মজার">funny</span> it'll seem to come out among the people that walk with their heads <span class="gw" data-bn="নিচের দিকে">downward</span>! The Antipathies<sup class="footnote-mark">2</sup>, I think—" (she was rather glad there was no one listening, this time, as it didn't sound at all the right word) "—but I shall have to ask them what the name of the country is, you know. Please, Ma'am, is this New-Zealand or Australia?" (and she tried to <span class="gw" data-bn="নতজানু হয়ে অভিবাদন">curtsey</span> as she spoke—fancy curtseying as you're falling through the air! Do you think you could <span class="gw" data-bn="পারা">manage</span> it?) "And what an <span class="gw" data-bn="অজ্ঞ">ignorant</span> little girl she'll think me for asking! No, it'll never do to ask: perhaps I shall see it written up somewhere."</p>
+        <p class="bn-line">একটু পরেই সে আবার শুরু করল। "আমি যদি একেবারে পৃথিবী ফুঁড়ে বেরিয়ে যাই! যেসব মানুষ মাথা নিচু করে হাঁটে, তাদের মধ্যে গিয়ে পড়লে কেমন মজার হবে! ভাবছি সেটাকে বুঝি 'অ্যান্টিপ্যাথিজ' বলে—" (সে খুশি হলো যে তখন কেউ শুনছিল না, কারণ শব্দটা ঠিক ঠিক মনে হচ্ছিল না) "—কিন্তু আমাকে তো ওদের জিজ্ঞেস করতেই হবে দেশটার নাম কী। বলুন তো ম্যাডাম, এটা কি নিউজিল্যান্ড, নাকি অস্ট্রেলিয়া?" (এবং কথা বলতে বলতে সে নতজানু হয়ে অভিবাদন জানানোর চেষ্টা করল—আকাশ থেকে পড়তে পড়তে নতজানু হওয়া ভাবা যায়!) "আর জিজ্ঞেস করলে আমাকে কতই না অজ্ঞ মেয়ে ভাববে! না, জিজ্ঞেস করা ঠিক হবে না; হয়তো কোথাও লেখা দেখতে পাব।"</p>
+
+        <p class="page-tag">Page 164</p>
+
+        <p class="en-line">Down, down, down. There was nothing else to do, so Alice soon began talking again. "Dinah'll miss me very much to-night, I should think!" (Dinah was the cat.) "I hope they'll remember her saucer of milk at tea-time. Dinah my dear! I wish you were down here with me! There are no mice in the air, I'm afraid, but you might catch a bat, and that's very like a mouse, you know. But do cats eat bats, I wonder?" And here Alice began to get rather <span class="gw" data-bn="স্বপ্নময়">sleepy, and went on saying to herself, in a dreamy</span> sort of way, <span class="key">"Do cats eat bats? Do cats eat bats?"</span> and sometimes, "Do bats eat cats?" for, you see, as she couldn't answer either question, it didn't much matter which way she put it. She felt that she was <span class="gw" data-bn="ঢুলতে থাকা">dozing</span> off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very <span class="gw" data-bn="আন্তরিকভাবে">earnestly</span>, "Now, Dinah, tell me the truth: did you ever eat a bat?" when suddenly, thump! thump! down she came upon a <span class="gw" data-bn="স্তূপ">heap</span> of <span class="gw" data-bn="ডালপালা">sticks</span> and dry leaves, and the fall was over.</p>
+        <p class="bn-line">নিচে, নিচে, আরও নিচে। করার আর কিছুই ছিল না, তাই অ্যালিস আবার কথা বলতে লাগল। "ডাইনা আজ রাতে নিশ্চয়ই আমাকে খুব মিস করবে!" (ডাইনা ছিল তার বিড়াল।) "আশা করি চায়ের সময় ওরা ওর দুধের বাটিটা দিতে ভুলবে না। ডাইনা, আমার সোনা! ইচ্ছে করে তুমি এখানে আমার সঙ্গে থাকতে! এখানে আকাশে কোনো ইঁদুর নেই, তবে হয়তো একটা বাদুড় ধরতে পারতে, সেটাও তো অনেকটা ইঁদুরের মতোই। কিন্তু বিড়াল কি বাদুড় খায়, কে জানে?" এখানেই অ্যালিসের চোখে ঘুম নেমে এল, আর সে স্বপ্নের ঘোরে বারবার বলতে লাগল, "বিড়াল কি বাদুড় খায়? বিড়াল কি বাদুড় খায়?" আর মাঝে মাঝে, "বাদুড় কি বিড়াল খায়?"—কারণ কোনো প্রশ্নেরই উত্তর সে জানত না বলে কোনদিক দিয়ে বলা হচ্ছে তাতে কিছু আসত-যেত না। ঘুমে ঢুলতে ঢুলতে সে স্বপ্ন দেখতে লাগল, ডাইনার হাত ধরে হাঁটছে আর গম্ভীর হয়ে জিজ্ঞেস করছে, "সত্যি করে বলো তো ডাইনা, তুমি কখনো বাদুড় খেয়েছ?"—ঠিক তখনই ধুপ্! ধুপ্! করে সে এসে পড়ল শুকনো পাতা আর ডালপালার একটা স্তূপের ওপর, আর তার পতন শেষ হলো।</p>
+
+        <p class="en-line">Alice was not a bit <span class="gw" data-bn="আঘাত পাওয়া">hurt</span>, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, <span class="gw" data-bn="তাড়াহুড়ো করা">hurrying</span> down it. There was not a moment to be lost: away went Alice like the wind, and was just in time to hear it say, as it turned a corner, "Oh my ears and <span class="gw" data-bn="গোঁফ">whiskers</span>, how late it's getting!" She was close behind it when she turned the corner, but the Rabbit was no longer to be seen: she found herself in a long, low hall, which was <span class="gw" data-bn="আলোকিত">lit</span> up by a row of <span class="gw" data-bn="বাতি">lamps</span> hanging from the <span class="gw" data-bn="ছাদ">roof</span>.</p>
+        <p class="bn-line">অ্যালিসের একটুও ব্যথা লাগেনি, আর সে মুহূর্তেই লাফিয়ে উঠে দাঁড়াল। উপরে তাকাল, কিন্তু সেখানে ছিল ঘোর অন্ধকার; সামনে ছিল আরেকটা লম্বা গলিপথ, আর সাদা খরগোশটা তখনও চোখে পড়ছিল, তাড়াহুড়ো করে সেই পথ দিয়ে ছুটছে। এক মুহূর্তও নষ্ট করার সময় ছিল না—অ্যালিস হাওয়ার বেগে ছুটল, আর ঠিক সময়ে শুনতে পেল খরগোশটা মোড় ঘুরতে ঘুরতে বলছে, "ওহ্ আমার কান আর গোঁফ, কী দেরিই না হয়ে যাচ্ছে!" মোড় ঘুরে সে খরগোশের একদম কাছে চলে এল, কিন্তু খরগোশটাকে আর দেখা গেল না; সে নিজেকে আবিষ্কার করল একটা লম্বা, নিচু হলঘরে, যেটা ছাদ থেকে ঝোলানো একসারি বাতির আলোয় আলোকিত ছিল।</p>
+
+        <p class="en-line">There were doors all round the hall, but they were all <span class="gw" data-bn="তালাবন্ধ">locked</span>; and when Alice had been all the way down one side and up the other, <span class="gw" data-bn="চেষ্টা করে">trying</span> every door, she walked <span class="gw" data-bn="দুঃখের সাথে">sadly</span> down the middle, wondering how she was ever to get out again.</p>
+        <p class="bn-line">হলঘরটার চারদিকে অনেক দরজা ছিল, কিন্তু সব ক'টাই তালাবন্ধ; আর একদিক দিয়ে গিয়ে অন্যদিক দিয়ে ফিরে প্রতিটা দরজা খোলার চেষ্টা করার পর অ্যালিস মন খারাপ করে মাঝখান দিয়ে হাঁটতে লাগল, ভাবতে লাগল সে আবার কীভাবে বেরোবে।</p>
+
+        <p class="en-line">Suddenly she came upon a little three-legged table, all made of solid glass; there was nothing on it except a tiny golden key, and Alice's first thought was that it might belong to one of the doors of the hall; but, <span class="gw" data-bn="হায়">alas</span>! either the locks were too large, or the key was too small, but at any rate it would not open any of them. However, on the second time round, she came upon a low <span class="gw" data-bn="পর্দা">curtain</span> she had not noticed before, and behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great <span class="gw" data-bn="আনন্দ">delight</span> it <span class="gw" data-bn="ঠিকমতো বসল">fitted</span>!</p>
+        <p class="bn-line">হঠাৎ সে একটা তিন-পায়া কাচের টেবিলের সামনে এসে পড়ল, পুরোটাই কাচ দিয়ে তৈরি; তার ওপর একটা ছোট্ট সোনালি চাবি ছাড়া আর কিছুই ছিল না, আর অ্যালিসের প্রথমেই মনে হলো এটা হলঘরের কোনো একটা দরজার হবে; কিন্তু হায়! হয় তালাগুলো খুব বড়, নয়তো চাবিটা খুব ছোট, কোনোভাবেই সেটা কোনো দরজা খুলল না। তবে, দ্বিতীয়বার ঘোরার সময়, সে আগে খেয়াল না করা একটা নিচু পর্দা দেখতে পেল, আর তার পেছনে ছিল প্রায় পনেরো ইঞ্চি উঁচু একটা ছোট্ট দরজা: সে সোনালি চাবিটা তালায় লাগিয়ে দেখল, আর তার আনন্দের সীমা রইল না—চাবিটা ঠিকঠাক বসে গেল!</p>
+
+        <p class="page-tag">Page 165</p>
+
+        <p class="en-line">Alice opened the door and found that it led into a small passage, not much larger than a rat-hole: she <span class="gw" data-bn="হাঁটু গেড়ে বসল">knelt</span> down and looked along the passage into the loveliest garden you ever saw. How she <span class="gw" data-bn="আকুল হয়ে চাইল">longed</span> to get out of that dark hall, and <span class="gw" data-bn="ঘুরে বেড়ানো">wander</span> about among those beds of bright flowers and those cool <span class="gw" data-bn="ঝর্ণা">fountains</span>, but she could not even get her head through the doorway; "and even if my head would go through," thought poor Alice, "it would be of very little use without my <span class="gw" data-bn="কাঁধ">shoulders</span>. <span class="key">Oh, how I wish I could shut up like a telescope! I think I could, if I only knew how to begin."</span> For, you see, so many out-of-the-way things had happened lately, that <span class="key">Alice had begun to think that very few things indeed were really impossible.</span></p>
+        <p class="bn-line">অ্যালিস দরজা খুলে দেখল সেটা একটা ইঁদুরের গর্তের চেয়ে সামান্য বড় একটা সরু পথে গিয়ে মিশেছে: সে হাঁটু গেড়ে বসে সেই পথ দিয়ে তাকিয়ে দেখল জীবনে দেখা সবচেয়ে সুন্দর বাগানটা। সেই অন্ধকার হলঘর থেকে বেরিয়ে সেই উজ্জ্বল ফুলের বিছানা আর শীতল ঝর্ণাগুলোর মধ্যে ঘুরে বেড়াতে তার প্রাণ কেমন করে উঠল, কিন্তু সে দরজা দিয়ে মাথাটাও গলাতে পারল না; "আর মাথা গলে গেলেও," বেচারা অ্যালিস ভাবল, "কাঁধ ছাড়া তাতে কোনো লাভই হবে না। ইশ্, দুরবীনের মতো যদি নিজেকে গুটিয়ে ফেলতে পারতাম! মনে হয় পারতাম, শুধু কীভাবে শুরু করতে হয় তা জানলেই হতো।" কারণ, সম্প্রতি এত সব অদ্ভুত ব্যাপার ঘটেছিল যে, অ্যালিস ভাবতে শুরু করেছিল যে সত্যিকারের অসম্ভব বলে কিছু খুব কমই আছে।</p>
+
+        <p class="en-line">There seemed to be no use in waiting by the little door, so she went back to the table, half hoping she might find another key on it, or at any rate a book of <span class="gw" data-bn="নিয়ম">rules</span> for shutting people up like telescopes<sup class="footnote-mark">3</sup>: this time she found a little bottle on it, ("which <span class="gw" data-bn="নিশ্চিতভাবে">certainly</span> was not here before," said Alice,) and round the neck of the bottle was a paper label, with the words <span class="key">"DRINK ME,"</span> <span class="gw" data-bn="সুন্দরভাবে">beautifully</span> printed on it in large letters.</p>
+        <p class="bn-line">সেই ছোট্ট দরজার পাশে দাঁড়িয়ে থাকার আর কোনো মানে ছিল না, তাই সে টেবিলের কাছে ফিরে গেল, আধা আশা নিয়ে যে হয়তো আরেকটা চাবি পাবে, অথবা অন্তত মানুষকে দুরবীনের মতো গুটিয়ে ফেলার নিয়মের একটা বই: এবার সে টেবিলে একটা ছোট্ট শিশি দেখতে পেল ("যেটা নিশ্চয়ই আগে এখানে ছিল না," অ্যালিস বলল), আর শিশির গলায় বাঁধা কাগজের লেবেলে বড় বড় সুন্দর অক্ষরে লেখা ছিল "আমাকে পান করো"।</p>
+
+        <p class="en-line">It was all very well to say "Drink me," but the wise little Alice was not going to do that in a hurry. "No, I'll look first," she said, "and see whether it's marked '<span class="gw" data-bn="বিষ">poison</span>' or not"; for she had read several nice little histories about children who had got burnt, and eaten up by wild beasts and other unpleasant things, all because they would not remember the simple rules their friends had taught them: such as, that a red-hot <span class="gw" data-bn="খুন্তি/লোহার শিক">poker</span> will <span class="gw" data-bn="পোড়ানো">burn</span> you if you hold it too long; and that if you cut your finger very deeply with a knife, it usually <span class="gw" data-bn="রক্ত ঝরে">bleeds</span>; and she had never forgotten that, if you drink much from a bottle marked "poison," it is almost certain to <span class="gw" data-bn="ক্ষতিকর হওয়া">disagree</span> with you, sooner or later.</p>
+        <p class="bn-line">"আমাকে পান করো" বলাটা সহজ, কিন্তু বুদ্ধিমতী অ্যালিস তাড়াহুড়ো করে সেটা করতে যাচ্ছিল না। "না, আগে দেখি," সে বলল, "দেখি এতে 'বিষ' লেখা আছে কিনা"; কারণ সে এমন অনেক ছোট ছোট গল্প পড়েছিল যেখানে বাচ্চারা পুড়ে গিয়েছিল, বন্য জন্তুর পেটে গিয়েছিল, আর আরও নানা অপ্রীতিকর ঘটনার শিকার হয়েছিল, শুধু বন্ধুদের শেখানো সহজ নিয়মগুলো মনে না রাখার কারণে: যেমন, বেশিক্ষণ ধরে থাকলে গরম খুন্তি হাত পুড়িয়ে দেবে; আর ছুরি দিয়ে গভীর করে আঙুল কাটলে সাধারণত রক্ত ঝরে; আর সে কখনো ভোলেনি যে, 'বিষ' লেখা শিশি থেকে বেশি খেলে তা আজ হোক কাল হোক শরীরে খারাপ প্রভাব ফেলবেই।</p>
+
+        <p class="en-line">However, this bottle was not marked "poison," so Alice <span class="gw" data-bn="সাহস করে করল">ventured</span><sup class="footnote-mark">4</sup> to taste it, and finding it very nice, <span class="key">(it had, in fact, a sort of mixed flavour of cherry-tart, custard, pine-apple, roast turkey, toffee, and hot buttered toast,)</span> she very soon <span class="gw" data-bn="শেষ করল">finished</span> it off.</p>
+        <p class="bn-line">তবে শিশিটায় 'বিষ' লেখা ছিল না, তাই অ্যালিস সাহস করে সেটা চেখে দেখল, আর খুব ভালো লাগায় (আসলে তাতে চেরি-টার্ট, কাস্টার্ড, আনারস, রোস্ট টার্কি, টফি, আর গরম মাখন-মাখা টোস্টের মিশ্র স্বাদ ছিল) সে খুব তাড়াতাড়ি পুরোটা শেষ করে ফেলল।</p>
+
+        <p class="en-line">"What a curious feeling!" said Alice; "I must be shutting up like a telescope."</p>
+        <p class="bn-line">"কী আশ্চর্য অনুভূতি!" অ্যালিস বলল; "আমি নিশ্চয়ই দুরবীনের মতো গুটিয়ে যাচ্ছি।"</p>
+
+        <p class="en-line">And so it was indeed: she was now <span class="key">only ten inches high</span>, and her face <span class="gw" data-bn="উজ্জ্বল হলো">brightened</span> up at the thought that she was now the right size for going through the little door into that lovely garden. First, however, she waited for a few minutes to see if she was going to shrink any further: she felt a little <span class="gw" data-bn="উদ্বিগ্ন">nervous</span> about this; "for it might end, you know," said Alice to herself, "in my going out altogether, like a candle. I wonder what I should be like then?" And she tried to <span class="gw" data-bn="কল্পনা করা">fancy</span> what the flame of a candle is like after the candle is blown out, for she could not remember ever having seen such a thing.</p>
+        <p class="bn-line">আর সত্যিই তাই হলো: সে তখন মাত্র দশ ইঞ্চি লম্বা, আর এই ভেবে তার মুখ উজ্জ্বল হয়ে উঠল যে এখন সে সেই সুন্দর বাগানে যাওয়ার ছোট্ট দরজা দিয়ে ঢোকার উপযুক্ত মাপেই আছে। তবে প্রথমে সে কয়েক মিনিট অপেক্ষা করল দেখতে সে আরও ছোট হয়ে যাচ্ছে কিনা: এ নিয়ে তার একটু ভয়ই লাগছিল; "কারণ এটা তো এমনও হতে পারে," অ্যালিস মনে মনে বলল, "যে আমি একেবারে মোমবাতির মতো নিভে যাব। তখন আমি দেখতে কেমন হব, কে জানে?" আর সে কল্পনা করার চেষ্টা করল মোমবাতি নিভে যাওয়ার পর তার শিখাটা দেখতে কেমন হয়, কারণ সে কখনো এমন কিছু দেখেছে বলে তার মনে পড়ল না।</p>
+
+        <p class="page-tag">Page 166</p>
+
+        <p class="en-line">After a while, finding that nothing more happened, she decided on going into the garden at once; but, alas for poor Alice! when she got to the door, she found she had forgotten the little golden key, and when she went back to the table for it, she found she could not possibly <span class="gw" data-bn="নাগাল পাওয়া">reach</span> it: she could see it quite plainly through the glass, and she tried her best to <span class="gw" data-bn="ওঠা">climb</span> up one of the legs of the table, but it was too <span class="gw" data-bn="পিচ্ছিল">slippery</span>; and when she had tired herself out with trying, the poor little thing sat down and cried.</p>
+        <p class="bn-line">কিছুক্ষণ পর, আর কিছু না ঘটতে দেখে, সে তখনই বাগানে যাওয়ার সিদ্ধান্ত নিল; কিন্তু হায় বেচারা অ্যালিস! দরজার কাছে গিয়ে দেখল সে সোনালি চাবিটা ভুলে গেছে, আর চাবি আনতে টেবিলের কাছে ফিরে গিয়ে দেখল কোনোভাবেই সেটা নাগালে আনতে পারছে না: কাচের ভেতর দিয়ে সে পরিষ্কার সেটা দেখতে পাচ্ছিল, আর টেবিলের একটা পায়া বেয়ে ওঠার চেষ্টা করল, কিন্তু সেটা বড্ড পিচ্ছিল ছিল; আর নিজেকে ক্লান্ত করে ফেলার পর বেচারী মেয়েটা বসে পড়ে কাঁদতে লাগল।</p>
+
+        <p class="en-line"><span class="key">"Come, there's no use in crying like that!" said Alice to herself, rather <span class="gw" data-bn="কড়াভাবে">sharply</span>; "I advise you to leave off this minute!"</span> She generally gave herself very good <span class="gw" data-bn="উপদেশ">advice</span>, (though she very <span class="gw" data-bn="কদাচিৎ">seldom</span> followed it), and sometimes she <span class="gw" data-bn="বকাঝকা করল">scolded</span> herself so <span class="gw" data-bn="কঠোরভাবে">severely</span> as to bring tears into her eyes; and once she remembered trying to box her own ears for having <span class="gw" data-bn="ঠকিয়েছে">cheated</span> herself in a game of croquet<sup class="footnote-mark">5</sup> she was playing against herself, for <span class="key">this curious child was very <span class="gw" data-bn="শখ">fond</span> of <span class="gw" data-bn="ভান করা">pretending</span> to be two people.</span> "But it's no use now," thought poor Alice, "to pretend to be two people! Why, there's hardly enough of me left to make one <span class="gw" data-bn="সম্মানজনক">respectable</span> person!"</p>
+        <p class="bn-line">"এই, এভাবে কেঁদে কোনো লাভ নেই!" অ্যালিস নিজেকে বেশ কড়া গলায় বলল; "আমি বলছি, এখনই কান্না থামাও!" সে সাধারণত নিজেকে খুব ভালো ভালো উপদেশ দিত (যদিও সে খুব কমই তা মেনে চলত), আর কখনো কখনো নিজেকে এমন কড়াভাবে বকত যে চোখে জল চলে আসত; একবার তো তার মনে আছে, নিজের সঙ্গে খেলা ক্রোকে খেলায় নিজেকে ঠকানোর জন্য নিজেরই কান মলে দেওয়ার চেষ্টা করেছিল—কারণ এই অদ্ভুত মেয়েটার নিজেকে দুজন মানুষ ভাবার শখ ছিল। "কিন্তু এখন আর তাতে লাভ নেই," বেচারা অ্যালিস ভাবল, "নিজেকে দুজন মানুষ ভাবার! আরে, একজন সম্মানজনক মানুষ বানানোর মতো তো আমার এখন আর তেমন কিছুই অবশিষ্ট নেই!"</p>
+
+        <p class="en-line">Soon her eye fell on a little glass box that was lying under the table: she opened it, and found in it a very small cake, on which the words <span class="key">"EAT ME"</span> were beautifully marked in <span class="gw" data-bn="কিসমিস জাতীয় ফল">currants</span>. "Well, I'll eat it," said Alice, "and if it makes me grow larger, I can reach the key; and if it makes me grow smaller, I can creep under the door; <span class="key">so either way I'll get into the garden, and I don't care which happens!"</span></p>
+        <p class="bn-line">শীঘ্রই তার চোখ পড়ল টেবিলের নিচে পড়ে থাকা একটা কাচের বাক্সের ওপর: সে সেটা খুলে দেখল, তাতে আছে একটা খুব ছোট্ট কেক, যার ওপর কিসমিস দিয়ে সুন্দরভাবে লেখা "আমাকে খাও"। "বেশ, আমি এটা খাব," অ্যালিস বলল, "যদি এটা আমাকে বড় করে দেয়, তাহলে আমি চাবিটা নাগালে পাব; আর যদি ছোট করে দেয়, তাহলে দরজার নিচ দিয়ে গলে যেতে পারব; তাই যেভাবেই হোক, আমি বাগানে ঢুকতে পারব, আর কী হয় তাতে আমার কিছু আসে-যায় না!"</p>
+
+        <p class="en-line">She ate a little bit, and said <span class="gw" data-bn="উদ্বিগ্নভাবে">anxiously</span> to herself, "Which way? Which way?", holding her hand on the top of her head to feel which way it was growing, and she was quite <span class="gw" data-bn="অবাক">surprised</span> to find that she <span class="gw" data-bn="রয়ে গেল">remained</span> the same size: to be sure, this generally happens when one eats cake, but Alice had got so much into the way of expecting nothing but out-of-the-way things to happen, that it seemed quite <span class="gw" data-bn="নিরস">dull</span> and stupid for life to go on in the common way.</p>
+        <p class="bn-line">সে একটু কামড় দিয়ে উদ্বিগ্নভাবে নিজেকে বলল, "কোনদিকে? কোনদিকে?"—মাথার ওপর হাত রেখে বোঝার চেষ্টা করল সে কোনদিকে বাড়ছে, আর অবাক হয়ে দেখল সে একই মাপে রয়ে গেছে: সত্যি বলতে, কেক খেলে সাধারণত এমনই হয়, কিন্তু অ্যালিস এতটাই অভ্যস্ত হয়ে গিয়েছিল অদ্ভুত-অদ্ভুত জিনিস ঘটতে দেখতে যে, জীবন স্বাভাবিকভাবে চলতে থাকাটাই তার কাছে বড্ড নিরস আর বোকা বোকা মনে হচ্ছিল।</p>
+
+        <p class="en-line">So she set to work, and very soon finished off the cake.</p>
+        <p class="bn-line">তাই সে কাজে লেগে গেল, আর খুব তাড়াতাড়ি পুরো কেকটা শেষ করে ফেলল।</p>
+
+      </div>
+
+      <ol class="footnotes">
+        <li><b>1. Hedge</b> — a fence or boundary formed by closely growing bushes or shrubs. <span class="bn">(ঝোপঝাড়ের বেড়া)</span></li>
+        <li><b>2. Antipathies</b> — a deep-seated feeling of aversion (Alice means "Antipodes," the opposite side of the globe). <span class="bn">(তীব্র অপছন্দ / বিতৃষ্ণা)</span></li>
+        <li><b>3. Telescope</b> — an optical instrument that makes distant objects appear nearer, using an arrangement of lenses. <span class="bn">(দুরবীন)</span></li>
+        <li><b>4. Ventured</b> — undertook a risky or daring course of action. <span class="bn">(সাহস করে করা)</span></li>
+        <li><b>5. Croquet</b> — a lawn game in which wooden balls are driven through hoops with mallets. <span class="bn">(ক্রোকে খেলা)</span></li>
+      </ol>
+    </section>
+
+    <section id="analysis">
+      <h2>Critical Analysis</h2>
+      <p class="sec-note">Five angles examiners like — use these as the backbone of any long answer. Difficult words are glossed in Bengali; a short Bengali gist follows each point.</p>
+
+      <div class="ca-point">
+        <h3>1. Victorian social norms and childhood expectation</h3>
+        <p>Carroll <span class="gw" data-bn="বৈপরীত্য দেখান">contrasts</span> <span class="gw" data-bn="ভিক্টোরিয়ান যুগের">Victorian</span> societal <span class="gw" data-bn="প্রত্যাশা">expectations</span> with the natural <span class="gw" data-bn="কৌতূহল">curiosity</span> of a child. Alice constantly attempts to act <span class="gw" data-bn="সংযত">composed</span>, <span class="gw" data-bn="ভদ্র">polite</span>, and <span class="gw" data-bn="যথাযথ">proper</span> — even in a completely <span class="gw" data-bn="পরাবাস্তব">surreal</span> environment:</p>
+        <ul>
+          <li>She worries about dropping a jar of marmalade because she fears "killing somebody underneath" as she falls.</li>
+          <li>She practices how to politely ask for directions and attempt a <span class="gw" data-bn="নতজানু অভিবাদন">curtsey</span> while literally falling through the air.</li>
+          <li>She severely <span class="gw" data-bn="বকাঝকা করে">scolds</span> herself and imagines being two people, reflecting the strict moral <span class="gw" data-bn="নিয়মানুবর্তিতা">discipline</span> and <span class="gw" data-bn="আত্মনিয়ন্ত্রণ">self-regulation</span> drilled into Victorian children.</li>
+        </ul>
+        <p>This highlights how Victorian education focused on <span class="gw" data-bn="মুখস্থবিদ্যা">rote memorization</span> and <span class="gw" data-bn="শিষ্টাচার">etiquette</span> over practical problem-solving.</p>
+        <p class="bn-line">কারল ভিক্টোরিয়ান সমাজের প্রত্যাশা আর একটি শিশুর স্বাভাবিক কৌতূহলের মধ্যে বৈপরীত্য তুলে ধরেছেন। এটি দেখায় যে ভিক্টোরিয়ান শিক্ষাব্যবস্থা শিষ্টাচার আর আত্মনিয়ন্ত্রণকে বাস্তব সমস্যা সমাধানের চেয়েও বেশি গুরুত্ব দিত।</p>
+      </div>
+
+      <div class="ca-point">
+        <h3>2. Education, rote learning, and misinterpretation</h3>
+        <p>Carroll — a <span class="gw" data-bn="গণিতবিদ">mathematician</span> and scholar — <span class="gw" data-bn="ব্যঙ্গ করেন">satirizes</span> the rigid education system of his era through Alice's inner <span class="gw" data-bn="মনোলগ">monologues</span>:</p>
+        <ul>
+          <li><b>Surface-level knowledge:</b> Alice uses big academic terms like "Latitude" and "Longitude" without actually understanding what they mean, simply because she thinks "they were nice grand words to say".</li>
+          <li><b>Malapropism:</b> She <span class="gw" data-bn="গুলিয়ে ফেলে">confuses</span> Antipodes (the opposite side of the globe) with "Antipathies".</li>
+          <li><b>Absurd rationalization:</b> She attempts to <span class="gw" data-bn="হিসাব করা">calculate</span> her falling speed using geographical <span class="gw" data-bn="অনুমান">estimates</span> (four thousand miles to the centre of the earth), showing a child's attempt to apply schoolroom logic to an illogical situation.</li>
+        </ul>
+        <p class="bn-line">কারল, নিজে একজন গণিতবিদ হওয়ায়, তাঁর সময়ের কঠোর মুখস্থ-নির্ভর শিক্ষাব্যবস্থাকে মৃদু ব্যঙ্গ করেছেন।</p>
+      </div>
+
+      <div class="ca-point">
+        <h3>3. Obsession with time and industrialization</h3>
+        <p>The White Rabbit represents the modern, <span class="gw" data-bn="উদ্বিগ্ন">anxious</span> Victorian adult driven by schedules, <span class="gw" data-bn="সময়ানুবর্তিতা">punctuality</span>, and <span class="gw" data-bn="শিল্পযুগীয়">industrial</span> <span class="gw" data-bn="জরুরিতা">urgency</span>:</p>
+        <ul>
+          <li>Unlike Alice, who is bored by the slow passage of time on the riverbank, the White Rabbit is in a perpetual state of panic over being late ("Oh dear! Oh dear! I shall be late!").</li>
+          <li>The rabbit carrying a pocket watch out of its waistcoat pocket marks the <span class="gw" data-bn="রূপান্তর">transition</span> from natural, open-air time to <span class="gw" data-bn="যান্ত্রিক">mechanical</span>, strict time.</li>
+        </ul>
+        <p class="bn-line">সাদা খরগোশ আধুনিক, সময়ের প্রতি উদ্বিগ্ন ভিক্টোরিয়ান প্রাপ্তবয়স্ক মানুষের প্রতীক, যে সময়সূচি আর নিয়মানুবর্তিতার অধীন।</p>
+      </div>
+
+      <div class="ca-point">
+        <h3>4. Identity, growth, and physical instability</h3>
+        <p>Alice's sudden physical <span class="gw" data-bn="রূপান্তর">transformations</span> serve as a literary <span class="gw" data-bn="রূপক">metaphor</span> for the <span class="gw" data-bn="বিভ্রান্তিকর">disorienting</span> experience of growing up (puberty/childhood transition):</p>
+        <ul>
+          <li><b>Lack of control:</b> One minute she is too big to fit through the garden door; the next, after drinking from the "DRINK ME" bottle, she shrinks down to ten inches and cannot reach the key on the table.</li>
+          <li><b>Logic vs. reality:</b> Alice tries to apply rules she learned from moral stories (e.g., checking if a bottle is marked "poison" or knowing that a red-hot poker burns), but Wonderland continuously <span class="gw" data-bn="অস্বীকার করে">defies</span> standard cause-and-effect rules.</li>
+          <li><b>Existential uncertainty:</b> As her body changes size rapidly, Alice's sense of self becomes <span class="gw" data-bn="অস্থির">unstable</span>, leading her to question who she is and how she ought to behave.</li>
+        </ul>
+        <p class="bn-line">অ্যালিসের আকস্মিক আকার পরিবর্তন বড় হয়ে ওঠার বিভ্রান্তিকর অভিজ্ঞতার একটি রূপক হিসেবে কাজ করে।</p>
+      </div>
+
+      <div class="ca-point">
+        <h3>5. Symbolism of the garden and the rabbit hole</h3>
+        <p><b>The Rabbit Hole:</b> Represents entering the <span class="gw" data-bn="অবচেতন মন">unconscious mind</span>, dream logic, or a <span class="gw" data-bn="ভাঙন">breakdown</span> of rational reality. <b>The Garden:</b> Visible through the tiny 15-inch door, the "loveliest garden you ever saw" represents an <span class="gw" data-bn="অধরা">unobtainable</span> paradise, ideal childhood <span class="gw" data-bn="নিষ্পাপতা">innocence</span>, or a desired destination that is constantly just out of reach due to physical limitations.</p>
+        <p class="bn-line">"খরগোশের গর্ত" অবচেতন মনে প্রবেশ বা যুক্তির ভাঙনকে বোঝায়, আর "বাগান" এমন একটি অধরা স্বর্গকে বোঝায় যা সবসময় নাগালের বাইরেই থেকে যায়।</p>
+      </div>
+    </section>
+
+    <section id="saq">
+      <h2>Short Answer Questions (SAQ)</h2>
+      <p class="sec-note">Click a question to reveal a model answer.</p>
+
+      <details class="qa"><summary><span class="qnum">1.</span> Why was Alice sitting on the bank feeling bored?</summary>
+        <div class="answer">Alice was tired of sitting beside her sister with nothing to do; she had peeped into her sister's book but found it had no pictures or conversations, which she felt made it useless.</div></details>
+
+      <details class="qa"><summary><span class="qnum">2.</span> What was unusual about the White Rabbit that made Alice curious?</summary>
+        <div class="answer">The Rabbit spoke to itself, took an actual watch out of a waistcoat-pocket, and hurried off worried about being late — Alice had never before seen a rabbit with a waistcoat-pocket or a watch.</div></details>
+
+      <details class="qa"><summary><span class="qnum">3.</span> What did Alice find on the shelves as she fell down the well?</summary>
+        <div class="answer">She saw cupboards and book-shelves lining the sides of the well, with maps and pictures hung on pegs, and she took down an empty jar labelled "ORANGE MARMALADE."</div></details>
+
+      <details class="qa"><summary><span class="qnum">4.</span> What did Alice do with the empty marmalade jar?</summary>
+        <div class="answer">Not wanting to hurt anyone by dropping it, she managed to put the jar into one of the cupboards as she continued falling past it.</div></details>
+
+      <details class="qa"><summary><span class="qnum">5.</span> What mistake does Alice make with the word "Antipathies"?</summary>
+        <div class="answer">She means "Antipodes" (the opposite side of the earth) but mistakenly says "Antipathies," which actually means a feeling of strong dislike — a small joke about half-learnt schoolroom words.</div></details>
+
+      <details class="qa"><summary><span class="qnum">6.</span> Who was Dinah, and what does Alice wonder about her?</summary>
+        <div class="answer">Dinah was Alice's pet cat. As she fell, Alice wondered whether Dinah would miss her, and drowsily kept asking herself, "Do cats eat bats?"</div></details>
+
+      <details class="qa"><summary><span class="qnum">7.</span> Describe the hall Alice finds herself in after the fall.</summary>
+        <div class="answer">It was a long, low hall lit by a row of lamps hanging from the roof, with locked doors running all around it.</div></details>
+
+      <details class="qa"><summary><span class="qnum">8.</span> What did Alice find on the little glass table, and what was it for?</summary>
+        <div class="answer">She found a tiny golden key, which she hoped would open one of the doors; it turned out to fit a small, curtain-hidden door only fifteen inches high.</div></details>
+
+      <details class="qa"><summary><span class="qnum">9.</span> Why could Alice not enter the garden at first?</summary>
+        <div class="answer">Although the little door was unlocked with the golden key, Alice was too big to fit through it — she could not even get her head through the doorway.</div></details>
+
+      <details class="qa"><summary><span class="qnum">10.</span> How did Alice make sure the bottle marked "DRINK ME" was safe to drink?</summary>
+        <div class="answer">She first checked that the bottle was not marked "poison," recalling stories of children who came to harm by ignoring simple safety rules.</div></details>
+
+      <details class="qa"><summary><span class="qnum">11.</span> What flavour did the "DRINK ME" bottle have?</summary>
+        <div class="answer">It tasted like a mixture of cherry-tart, custard, pine-apple, roast turkey, toffee, and hot buttered toast.</div></details>
+
+      <details class="qa"><summary><span class="qnum">12.</span> What happened to Alice after she drank from the bottle?</summary>
+        <div class="answer">She shrank to only ten inches high — the right size to go through the little door into the garden, though she had then forgotten the key on the table.</div></details>
+
+      <details class="qa"><summary><span class="qnum">13.</span> What was written on the little cake, and how?</summary>
+        <div class="answer">The words "EAT ME" were beautifully marked out in currants on a very small cake found in a glass box under the table.</div></details>
+
+      <details class="qa"><summary><span class="qnum">14.</span> What reasoning does Alice use before eating the cake?</summary>
+        <div class="answer">She decides that either way she will get into the garden — if the cake makes her grow larger she can reach the key, and if it makes her smaller she can creep under the door.</div></details>
+    </section>
+
+    <section id="laq">
+      <h2>Long Answer Questions</h2>
+      <p class="sec-note">Full-length answers to write out in your own words for 5/6-mark questions.</p>
+
+      <details class="qa laq"><summary><span class="qnum">1.</span> Draw a character sketch of Alice as she appears in this chapter.</summary>
+        <div class="answer">Alice emerges as an imaginative, curious, and self-aware child. Her curiosity is the engine of the whole story — it is what makes her follow a talking rabbit down a hole without a thought for how she will get back out. At the same time, she is thoughtful and cautious in small, practical ways: she checks whether the bottle is marked "poison" before drinking it, and worries about hurting someone by dropping the marmalade jar. She has also absorbed a great deal of Victorian schoolroom learning — Latitude, Longitude, the distance to the centre of the earth — even though she doesn't fully understand these ideas, and enjoys "showing off" her knowledge even when no one is listening. Alice talks to herself constantly, scolds herself, and even imagines herself as two separate people, showing a rich inner life and a habit of moral self-discipline. Despite the strangeness around her, she keeps trying to behave with politeness and composure (rehearsing a curtsey mid-fall), which is both comic and revealing of how deeply Victorian manners were instilled in children. By the end of the chapter she has begun to accept that "very few things indeed were really impossible" — showing a growing willingness to embrace Wonderland's illogical rules.</div></details>
+
+      <details class="qa laq"><summary><span class="qnum">2.</span> What role does the White Rabbit play in the opening chapter, and what does he represent?</summary>
+        <div class="answer">The White Rabbit is the trigger for the entire adventure: his odd behaviour — talking to himself, checking a pocket watch, worrying aloud about being late — is strange enough to overcome Alice's boredom and pull her out of her sleepy daydream on the riverbank. Structurally, he functions as a guide (though an unwitting one) who leads Alice from the ordinary world into Wonderland, vanishing once she has entered the long hall. Symbolically, the Rabbit represents the anxious, clock-bound adult of the industrial Victorian age — a figure ruled entirely by time and punctuality, in sharp contrast to Alice's own unhurried, timeless boredom at the start of the chapter. His refrain, "Oh dear! Oh dear! I shall be late!", turns him into a comic emblem of adult urgency dropped into a world where, ironically, time and logic stop working altogether.</div></details>
+
+      <details class="qa laq"><summary><span class="qnum">3.</span> Discuss the theme of curiosity and imagination in "Down the Rabbit-Hole."</summary>
+        <div class="answer">Curiosity is the driving force of the chapter from its very first page. Alice's boredom with a picture-less, conversation-less book already signals a mind hungry for stimulation, and it is "burning with curiosity" that she chases the White Rabbit and jumps down the hole "never once considering how in the world she was to get out again." Once inside, her imagination keeps working overtime to make sense of the impossible: she invents explanations for her endless fall (calculating miles and imagining Antipodes), imagines conversations with her cat Dinah, and pictures what a candle-flame looks like after it's blown out. Carroll rewards this curiosity rather than punishing it — every risk Alice takes (tasting the bottle, eating the cake) moves her closer to the garden she longs for. The chapter suggests that a child's boundless curiosity and imaginative reasoning, even when factually wrong or absurd, are more valuable tools for navigating an irrational world than adult logic and caution.</div></details>
+
+      <details class="qa laq"><summary><span class="qnum">4.</span> How does Lewis Carroll use nonsense and logic together in this chapter? Illustrate with examples.</summary>
+        <div class="answer">Carroll, a mathematician by training, builds his "nonsense" out of logical structures pushed just past their breaking point. Alice's mid-air calculation of "four thousand miles" to the centre of the earth is genuine schoolroom arithmetic, applied absurdly to a magical, endless fall. Her wondering whether she will emerge among "the people that walk with their heads downward" plays with real geographical logic (the Antipodes) while comically mangling the word itself into "Antipathies." Her question "Do cats eat bats?" and its inversion "Do bats eat cats?" is built on the symmetrical logic of a grammatical swap, even though neither question can be sensibly answered. Even her plan for the cake — "either way I'll get into the garden" — is a small, perfectly rational deduction built on two impossible premises (that cake could make her grow or shrink). This blend is exactly what makes Wonderland's logic feel coherent rather than chaotic: the rules of the real world are followed faithfully, only the premises have been quietly replaced with impossible ones.</div></details>
+
+      <details class="qa laq"><summary><span class="qnum">5.</span> Alice's fall down the rabbit-hole has been read as a metaphor. Explain this idea with reference to the text.</summary>
+        <div class="answer">Alice's long, slow fall down the well works on more than one symbolic level. Literally it is a fall from the ordinary, sunlit riverbank into a hidden, dreamlike underworld — the shelves of books, maps, and cupboards she passes on the way down suggest she is falling through layers of her own mind or education rather than through solid earth, hinting that the rabbit-hole represents entry into the unconscious or into dream-logic. The chapter's closing image of the garden, glimpsed through a doorway she is the wrong size to pass through, extends this metaphor: it stands for a desired goal or an idealised, innocent state that always seems tantalisingly close yet just out of reach, whatever size (or stage of growth) Alice happens to be. Her body's constant, uncontrollable changes in size on the way to that door — first too big, then shrinking to ten inches — have also been read as a metaphor for the disorientation of growing up, where a child's sense of self keeps changing faster than she can manage it. Taken together, the fall, the locked hall of doors, and the glimpsed garden dramatise the experience of being caught between one state and another, unable to fully arrive anywhere.</div></details>
+    </section>
+
+    <footer>Study notes compiled from the prescribed text of <em>Alice's Adventures in Wonderland</em>, Ch. 1, for HS 4th Semester English (A Realm of English – B).</footer>
+  </main>
+</div>
+
+<div id="tooltip"><span class="en" id="tooltipEn"></span><span id="tooltipBn" class="bn"></span></div>
+
+<script>
+(function(){
+  // ---------- glossary tooltip ----------
+  var tooltip = document.getElementById('tooltip');
+  var tEn = document.getElementById('tooltipEn');
+  var tBn = document.getElementById('tooltipBn');
+  var openWord = null;
+
+  function closeTooltip(){
+    tooltip.style.display = 'none';
+    if(openWord){ openWord.classList.remove('open'); openWord = null; }
+  }
+
+  document.querySelectorAll('.gw').forEach(function(w){
+    w.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(openWord === w){ closeTooltip(); return; }
+      if(openWord) openWord.classList.remove('open');
+      openWord = w;
+      w.classList.add('open');
+      tEn.textContent = w.textContent;
+      tBn.textContent = w.getAttribute('data-bn');
+      tooltip.style.display = 'block';
+      var r = w.getBoundingClientRect();
+      var top = r.bottom + 8;
+      var left = Math.min(Math.max(8, r.left), window.innerWidth - 276);
+      tooltip.style.top = top + 'px';
+      tooltip.style.left = left + 'px';
+    });
+  });
+  document.addEventListener('click', closeTooltip);
+  window.addEventListener('scroll', closeTooltip, true);
+
+  // ---------- side nav active state ----------
+  var links = document.querySelectorAll('nav.side a');
+  var sections = Array.prototype.map.call(links, function(a){ return document.querySelector(a.getAttribute('href')); });
+  window.addEventListener('scroll', function(){
+    var pos = window.scrollY + 100;
+    var current = sections[0];
+    sections.forEach(function(s){ if(s && s.offsetTop <= pos) current = s; });
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + current.id); });
+  });
+
+  // ---------- font size control ----------
+  var storyEl = document.getElementById('storyText');
+  var fontSize = 17;
+  document.getElementById('fontPlus').addEventListener('click', function(){
+    fontSize = Math.min(24, fontSize + 1);
+    storyEl.style.fontSize = fontSize + 'px';
+  });
+  document.getElementById('fontMinus').addEventListener('click', function(){
+    fontSize = Math.max(14, fontSize - 1);
+    storyEl.style.fontSize = fontSize + 'px';
+  });
+
+  // ---------- Bengali translation toggle ----------
+  var bnToggle = document.getElementById('bnToggle');
+  var bnOn = true;
+  bnToggle.addEventListener('click', function(){
+    bnOn = !bnOn;
+    document.body.classList.toggle('hide-bn', !bnOn);
+    bnToggle.textContent = 'বাংলা অনুবাদ: ' + (bnOn ? 'On' : 'Off');
+    bnToggle.classList.toggle('on', bnOn);
+  });
+
+  // ---------- wrap every word of every English line for word-synced highlight ----------
+  var paragraphs = Array.prototype.slice.call(storyEl.querySelectorAll('p.en-line'));
+
+  function wrapWords(p){
+    var walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, null, false);
+    var textNodes = [];
+    var node;
+    while(node = walker.nextNode()) textNodes.push(node);
+    textNodes.forEach(function(tn){
+      var text = tn.nodeValue;
+      if(!/\S/.test(text)) return;
+      var frag = document.createDocumentFragment();
+      var re = /(\s+|[^\s]+)/g, m;
+      while(m = re.exec(text)){
+        var chunk = m[0];
+        if(/\S/.test(chunk)){
+          var span = document.createElement('span');
+          span.className = 'rw';
+          span.textContent = chunk;
+          frag.appendChild(span);
+        } else {
+          frag.appendChild(document.createTextNode(chunk));
+        }
+      }
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  function indexParagraph(p){
+    var words = Array.prototype.slice.call(p.querySelectorAll('.rw'));
+    var full = p.textContent;
+    var pos = 0;
+    var recs = [];
+    words.forEach(function(w){
+      var wt = w.textContent;
+      var found = full.indexOf(wt, pos);
+      if(found === -1) found = pos;
+      recs.push({start: found, end: found + wt.length, el: w});
+      pos = found + wt.length;
+    });
+    p._wordRecs = recs;
+  }
+
+  paragraphs.forEach(function(p){ wrapWords(p); indexParagraph(p); });
+
+  // ---------- read-aloud, word-synced ----------
+  var synth = window.speechSynthesis;
+  var idx = 0;
+  var playing = false;
+  var lastWordEl = null;
+  var voiceSelect = document.getElementById('voiceSelect');
+  var rateSelect = document.getElementById('rateSelect');
+  var nowReading = document.getElementById('nowReading');
+
+  function populateVoices(){
+    var voices = synth.getVoices().filter(function(v){ return v.lang.indexOf('en') === 0; });
+    if(voices.length === 0) voices = synth.getVoices();
+    voiceSelect.innerHTML = '';
+    voices.forEach(function(v, i){
+      var opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = v.name + ' (' + v.lang + ')';
+      voiceSelect.appendChild(opt);
+    });
+    voiceSelect._voices = voices;
+  }
+  populateVoices();
+  if(typeof synth.onvoiceschanged !== 'undefined'){ synth.onvoiceschanged = populateVoices; }
+
+  function clearParaHighlight(){
+    paragraphs.forEach(function(p){ p.classList.remove('speaking'); });
+  }
+  function clearWordHighlight(){
+    if(lastWordEl){ lastWordEl.classList.remove('word-speaking'); lastWordEl = null; }
+  }
+
+  function speakNext(){
+    if(idx >= paragraphs.length){
+      playing = false;
+      nowReading.textContent = 'Finished reading.';
+      clearParaHighlight();
+      clearWordHighlight();
+      return;
+    }
+    clearParaHighlight();
+    clearWordHighlight();
+    var p = paragraphs[idx];
+    p.classList.add('speaking');
+    p.scrollIntoView({behavior:'smooth', block:'center'});
+    nowReading.textContent = 'Reading line ' + (idx + 1) + ' of ' + paragraphs.length + '…';
+
+    var utter = new SpeechSynthesisUtterance(p.textContent);
+    var voices = voiceSelect._voices || [];
+    var chosen = voices[voiceSelect.value];
+    if(chosen) utter.voice = chosen;
+    utter.rate = parseFloat(rateSelect.value);
+
+    utter.onboundary = function(ev){
+      if(ev.name && ev.name !== 'word') return;
+      var ci = ev.charIndex;
+      var recs = p._wordRecs;
+      var rec = null;
+      for(var i = 0; i < recs.length; i++){
+        if(ci >= recs[i].start && ci < recs[i].end){ rec = recs[i]; break; }
+      }
+      if(!rec){
+        for(var j = recs.length - 1; j >= 0; j--){
+          if(recs[j].start <= ci){ rec = recs[j]; break; }
+        }
+      }
+      if(rec){
+        clearWordHighlight();
+        rec.el.classList.add('word-speaking');
+        lastWordEl = rec.el;
+      }
+    };
+
+    utter.onend = function(){
+      if(playing){ idx++; speakNext(); }
+    };
+    synth.speak(utter);
+  }
+
+  document.getElementById('playBtn').addEventListener('click', function(){
+    if(synth.paused && synth.speaking){ synth.resume(); playing = true; return; }
+    if(playing) return;
+    playing = true;
+    speakNext();
+  });
+  document.getElementById('pauseBtn').addEventListener('click', function(){
+    if(synth.speaking && !synth.paused){ synth.pause(); }
+  });
+  document.getElementById('stopBtn').addEventListener('click', function(){
+    playing = false;
+    synth.cancel();
+    clearParaHighlight();
+    clearWordHighlight();
+    idx = 0;
+    nowReading.textContent = '';
+  });
+})();
+</script>
+</body>
+</html>
